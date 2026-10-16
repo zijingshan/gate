@@ -85,7 +85,7 @@ EDGE_HOSTS = [
     h.strip()
     for h in os.environ.get(
         "EDGE_HOSTS",
-        "",
+        "saas.sin.fan:443",
     ).split(",")
     if h.strip()
 ]
