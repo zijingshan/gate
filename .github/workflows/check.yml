@@ -1,9 +1,11 @@
 name: VPN Gate Node Check
 
 on:
+  # 定时检测: 默认每 30 分钟一次。改成每 60 分钟: cron: "0 * * * *"
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0  * * *"
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
@@ -33,7 +35,7 @@ jobs:
         run: python vpngate.py
         env:
           # 已部署的检测 Worker (不要改动: 检测统一走这里)
-          CHECK_WORKER: ${{ secrets.DOMAIN }}
+          CHECK_WORKER: "https://sst.xuanwuhu.dpdns.org/check?sstp=vpn:vpn@"
           CHECK_CONCURRENCY: "32"
           CHECK_TIMEOUT: "90"
 
